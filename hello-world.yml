@@ -11,8 +11,11 @@ jobs:
             type: registry-image
             source:
               repository: busybox # images are pulled from docker hub by default
-          # The command Concourse will run inside the container
-          # echo "Hello world!"
+          # Add "the-artifact" to our task
+          outputs:
+              - name: the-artifact
           run:
-            path: echo
-            args: [ "Hello world!" ]
+            # Change the command to `ls -lF` to see
+            # what the task sees in its working directory
+            path: ls
+            args: [ "-lF" ]
